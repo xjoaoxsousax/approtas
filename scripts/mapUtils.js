@@ -72,7 +72,7 @@ function displayRouteOnMap(coordinates, routeName) {
 
   // Add route line
   mapLayers.route = L.polyline(latlngs, { 
-    color: '#ffcc00', 
+    color: '#0066cc', 
     weight: 5,
     opacity: 0.8,
     lineCap: 'round',
