@@ -70,13 +70,32 @@ function displayRouteOnMap(coordinates, routeName) {
   // Initialize map with starting point
   const map = initializeMap(startPoint);
 
-  // Add route line
+  // Add route line with blue color and increased weight
   mapLayers.route = L.polyline(latlngs, { 
     color: '#0066cc', 
-    weight: 5,
+    weight: 8, // Increased line weight
     opacity: 0.8,
     lineCap: 'round',
     lineJoin: 'round'
+  }).addTo(map);
+
+  // Add arrows to show direction
+  const decorator = L.polylineDecorator(mapLayers.route, {
+    patterns: [
+      {
+        offset: 25,
+        repeat: 100,
+        symbol: L.Symbol.arrowHead({
+          pixelSize: 12,
+          polygon: false,
+          pathOptions: {
+            stroke: true,
+            color: '#ffcc00',
+            weight: 3
+          }
+        })
+      }
+    ]
   }).addTo(map);
 
   // Add start marker
